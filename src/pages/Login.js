@@ -6,17 +6,27 @@ import {makeStyles} from '@material-ui/styles'
 
 
 const useStyles = makeStyles({
+    background:{
+        backgroundColor:'Linear-Gradient(to right ,red ,yellow)'
+    },
+    heading:{
+        marginLeft:'50px',
+        textAlign:'center'
+    } ,
     usernameTextfield:{
-        marginTop:'40px',
-        width:'60%'
+        marginTop:'60px',
+        marginLeft:'100px',
+        width:'60%',
+
     } ,
     passwordTextfield:{
         marginTop:'50px',
+        marginLeft:'100px',
         width:'60%'
     } ,
     submitBtn : {
         marginTop:'40px',
-        marginLeft:'25%'
+        marginLeft:'30%'
     },
     cancelBtn:{
        marginTop:'40px',
@@ -26,10 +36,18 @@ const useStyles = makeStyles({
 
 const Login = () => {
 const classes = useStyles();
+
+
+const handleSubmit = (e) =>{
+    e.preventDefault();
+}
+const handleCancel = () =>{
+    alert("clicked");
+}
     return(
         <>
-        <Container maxWidth='sm'>
-            <Typography variant='h4' sx={{marginTop:'50px'}}>Login Page</Typography>
+        <Container component='form'  maxWidth='sm' className={classes.background}>
+            <Typography className={classes.heading} sx={{marginTop:'50px'}} variant='h4' >Login Page</Typography>
             <Stack className={classes.usernameTextfield} >
                 <TextField label='UserName' variant='filled' />
             </Stack>
@@ -38,10 +56,10 @@ const classes = useStyles();
             </Stack>
             <Stack direction='row'>
             <Stack className={classes.submitBtn} direction='row'>
-                <Button className={classes.submitBtn} variant='contained'>Submit</Button>
+                <Button  type='submit' onClick={handleSubmit}  className={classes.submitBtn} variant='contained'>Submit</Button>
             </Stack>
             <Stack className={classes.cancelBtn}>
-                <Button className={classes.cancelBtn} variant='contained'>Cancel</Button>
+                <Button   className={classes.cancelBtn} variant='contained'>Cancel</Button>
             </Stack>
             </Stack>
            
